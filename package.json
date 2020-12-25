@@ -1,0 +1,24 @@
+{
+  "name": "medium",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rahul-D78/medium_clone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rahul-D78/medium_clone/issues"
+  },
+  "homepage": "https://github.com/Rahul-D78/medium_clone#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "typescript": "^4.1.3"
+  }
+}
