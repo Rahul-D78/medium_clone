@@ -16,7 +16,7 @@
 
 ```$ psql```
 
-2. Create database user and grant all pri
+2. Create database user and grant all privileges .
 
 ```psql
  $create database conduit;
@@ -26,3 +26,9 @@
  $grant all privileges on database conduit to conduit;
 
 ```
+
+## Installation
+```$ npm install```
+
+## Running the app
+```$ npm start```
