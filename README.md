@@ -18,7 +18,7 @@
 
 2. Create database user and grant all privileges .
 
-```psql
+```SQL
  $create database conduit;
  
  $create user conduit with encrypted password 'conduit';
