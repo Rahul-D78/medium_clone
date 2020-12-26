@@ -16,7 +16,7 @@
 
 ```$ psql```
 
-2. Create database user and grant all pri
+2. Create database user and grant all privileges 
 
 ```psql
  $create database conduit;
