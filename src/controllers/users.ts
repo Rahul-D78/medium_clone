@@ -1,20 +1,36 @@
 import { getRepository } from "typeorm";
 import { User } from "../entities/User";
+import { hashPassword } from "../utils/password";
 
 interface UserSignUpData {
     username: string
-    // passsword: string securly handeled later using oauth
+    passsword: string
     email: string
 }
 
 export async function createUser(data: UserSignUpData) {
 
-    const user = await getRepository(User).save({
+    // if(!data.username) throw new Error('username is blank')
+    // if(!data.passsword) throw new Error('password is blank')
+    // if(!data.email) throw new Error('email is blank')
 
-        username: data.username,
-        email: data.email
-    })
+   try{
 
-    return user
+    const user = new User()
+
+        user.username = data.username
+        user.email = data.email
+        user.password = await hashPassword(data.passsword)
+
+        console.log(user);
+        const result = await getRepository(User).save(user)
+
+    console.log(user);
+    
+    
+   }catch(e) {
+       console.log(e);
+       
+   }
     
 }
