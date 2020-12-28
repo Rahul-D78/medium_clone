@@ -16,15 +16,7 @@
 
 ```$ psql```
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 2. Create database user and grant all privileges 
-=======
-2. Create database user and grant all privileges .
->>>>>>> 49bda5fb43631371560b164429bc28586c86b448
-=======
-2. Create database user and grant all privileges .
->>>>>>> 5740635798204da0909f45328c1234f35f2e29ea
 
 ```SQL
  $create database conduit;
