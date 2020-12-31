@@ -1,6 +1,7 @@
 import { getRepository } from "typeorm";
 import { User } from "../entities/User";
 import { hashPassword } from "../utils/password";
+import { sanitizeFields } from "../utils/security";
 
 interface UserSignUpData {
     username: string
@@ -22,12 +23,9 @@ export async function createUser(data: UserSignUpData) {
         user.email = data.email
         user.password = await hashPassword(data.passsword)
 
-        console.log(user);
-        const result = await getRepository(User).save(user)
-
-    console.log(user);
-    
-    
+        await getRepository(User).save(user)  
+        console.log(sanitizeFields(user));
+        
    }catch(e) {
        console.log(e);
        
