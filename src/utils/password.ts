@@ -13,3 +13,13 @@ export function hashPassword(password: string): Promise<string> {
         })
     })
 }
+
+export function matchPassword(hash: string, password: string): Promise<Boolean> {
+    return new Promise<Boolean>((resolve, reject) => {
+        bcrypt.compare(password, hash, (err, same) => {
+            if(err) return reject(err)
+
+            resolve(same)
+        })
+    })
+}

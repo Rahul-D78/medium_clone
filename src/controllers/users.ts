@@ -1,13 +1,19 @@
 import { sign } from "../utils/jwt";
 import { getRepository } from "typeorm";
 import { User } from "../entities/User";
-import { hashPassword } from "../utils/password";
+import { hashPassword, matchPassword } from "../utils/password";
 import { sanitizeFields } from "../utils/security";
 
 interface userSignUpData {
 
     username: string,
     password: string, 
+    email: string
+}
+
+interface userLoginData {
+
+    password: string,
     email: string
 }
 
@@ -61,4 +67,25 @@ export async function createUser(data: userSignUpData) {
         console.error(e)
     }
     
+}
+
+export async function loginUser(data: userLoginData): Promise<User> {
+
+    if(!data.email) throw new Error("Email field is blank")
+    if(!data.password) throw new Error("password is blank")
+
+    const repo  = getRepository(User)
+
+    //check for existing
+    const user = await repo.findOne(data.email)
+
+    if(!user) throw new Error("No user with this Email");
+
+    //check if password mathches
+    const passMatch = await matchPassword(user.password!, data.password)
+    if(passMatch === false) throw new Error("Wrong password");
+
+    user.token = await sign(user)
+
+    return sanitizeFields(user)
 }
