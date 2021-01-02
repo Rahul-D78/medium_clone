@@ -89,3 +89,17 @@ export async function loginUser(data: userLoginData): Promise<User> {
 
     return sanitizeFields(user)
 }
+
+export async function getUserByEmail(email:string): Promise<User> {
+    
+    const repo  = getRepository(User)
+
+    //check for existing
+    const user = await repo.findOne(email)
+
+    if(!user) throw new Error("No user with this Email");
+
+    //check if password mathches
+
+    return sanitizeFields(user)
+}
