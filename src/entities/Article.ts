@@ -9,7 +9,7 @@ export class Article {
     @PrimaryColumn({length: 40})
     slug: string
 
-    @Column({length: 40})
+    @Column({length: 50})
     title?: string
 
     @Column({length: 100, nullable:true})
@@ -26,6 +26,15 @@ export class Article {
 
     @ManyToOne(() => User)
     author: User
+
+    constructor(author: User, title: string, description: string, body: string, slug: string){
+        this.author = author
+        this.body = body
+        this.title = title
+        this.description = description
+        this.slug = slug
+
+    }
 }
 
 

@@ -77,6 +77,7 @@ export async function loginUser(data: userLoginData): Promise<User> {
     const repo  = getRepository(User)
 
     //check for existing
+    try {
     const user = await repo.findOne(data.email)
 
     if(!user) throw new Error("No user with this Email");
@@ -88,13 +89,18 @@ export async function loginUser(data: userLoginData): Promise<User> {
     user.token = await sign(user)
 
     return sanitizeFields(user)
+    }catch(e) {
+        throw e
+    }
 }
 
 export async function getUserByEmail(email:string): Promise<User> {
     
+
     const repo  = getRepository(User)
 
     //check for existing
+    try{
     const user = await repo.findOne(email)
 
     if(!user) throw new Error("No user with this Email");
@@ -102,4 +108,7 @@ export async function getUserByEmail(email:string): Promise<User> {
     //check if password mathches
 
     return sanitizeFields(user)
+    }catch(e) {
+        throw e
+    }
 }
