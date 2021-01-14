@@ -23,6 +23,8 @@
  
  $create user conduit with encrypted password 'conduit';
  
+ `swith to the newly created db and grant all privileges to the user`
+ 
  $grant all privileges on database conduit to conduit;
 
 ```
