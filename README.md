@@ -6,7 +6,9 @@
 2. Nodejs - Platform 
 3. express - framework
 4. TypeORM - ORM
-5. PostgreSQL - Database 
+5. PostgreSQL - Database
+6. JWT -- auth
+7. Google OAuth -- auth
 
 ## Database setup
 
