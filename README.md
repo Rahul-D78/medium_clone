@@ -1,4 +1,5 @@
-# medium clone based upon realworld.io api
+# Introduction :
+This is an api for an blogging app based on `realworld.io` API . The frontend of the project is build using `React.js` [Follow_Link]().
 
 ## Technologies used 
 
