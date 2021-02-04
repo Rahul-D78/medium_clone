@@ -25,7 +25,7 @@ export async function createArticle(data: articleData, email: string): Promise<A
         if(!user) throw new Error("user does not exists")
      
         const article = await articleRepo.save(new Article(
-            await slugify(data.title),
+            slugify(data.title),
             data.title,
             data.description,
             data.body,
@@ -64,23 +64,3 @@ export async function deleteArticle(slug: string){
     }catch(e) {
        throw e
    }}
-
-// async function getUpdatedArticle(data: articleData, email: User, slug: string) {
-
-//     const userRepo = getRepository(User)
-//     const articleRepo = getRepository(Article)
-
-//     //check for existance
-//     try {
-//         const user = await userRepo.findOne(email)
-//         const article = await articleRepo.findOne(slug)
-        
-//         if(!user) throw new Error("User with this email not exists")
-//         if(!slug) throw new Error("Slug does not exists")
-
-//         if(data.body) article?.body == data.body
-//         if(data.description) article?.description == data.description
-//         if(data.title)
-//         }
-    
-// }
